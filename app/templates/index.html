@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список сайтов</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        #add-site-form {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+        #add-site-form button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #add-site-form button:hover {
+            background-color: #0056b3;
+        }
+        .sites-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .site-card {
+            text-align: center;
+            margin: 10px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: calc(33.33% - 20px);
+            transition: box-shadow 0.3s ease;
+        }
+        .site-card:hover {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        .site-card img {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        function add_site() {
+            var port = prompt("Порт сайта в локальной сети:", "");
+            fetch('/add_site?site_url=' + port
+            // , {
+            //     method: "POST"
+            // }
+            );
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div id="add-site-form">
+            <form onsubmit="add_site()">
+                <button type="submit">Добавить сайт</button>
+            </form>
+        </div>
+        <div class="sites-container">
+            {% for site in sites %}
+                <a href="{{ site.site_url }}" class="site-card">
+                    <img src="{{ site.favicon_url }}" alt="Favicon">
+                    <h3>{{ site.site_title }}</h3>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
