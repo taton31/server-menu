@@ -2,3 +2,5 @@
 venv/
 __pycache__
 sites_data.txt
+
+tst.py
