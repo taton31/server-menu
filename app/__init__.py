@@ -36,7 +36,7 @@ async def add_site(request: Request, site_url:str):
         favicon = soup.select('link[href*=favicon]')
         if favicon:
             if isinstance(favicon, list): favicon = favicon[0]
-            favicon_url = f'{site_url}{favicon["href"].replace(".","")}'
+            favicon_url = f'{site_url}{favicon["href"].strip(".")}'
         else:
             favicon_url = f"{site_url}/favicon.ico"
 
