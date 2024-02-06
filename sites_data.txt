@@ -1,1 +1,0 @@
-[{'site_title': 'TG cloud', 'favicon_url': 'http://192.168.3.39:8080/favicon.ico', 'site_url': 'http://192.168.3.39:8080'}, {'site_title': 'TorrServer MatriX', 'favicon_url': 'http://192.168.3.39:8090/favicon.ico', 'site_url': 'http://192.168.3.39:8090'}]
